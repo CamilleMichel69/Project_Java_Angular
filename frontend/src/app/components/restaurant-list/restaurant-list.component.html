@@ -1,0 +1,15 @@
+<section>
+  <h1>Liste des restaurants</h1>
+  <ul>
+    <li *ngFor="let restaurant of restaurants">
+      <h2>{{ restaurant.name }}</h2> 
+      <p>{{ restaurant.address }} </p>
+      <p>{{ restaurant.city }} ({{ restaurant.zipCode }})</p>
+      <span><strong>Scores d'allergies :</strong></span>
+      <span>🥚 Oeufs : {{ restaurant.eggScore !== null && restaurant.eggScore !== undefined ? restaurant.eggScore + '/5' : 'N/A' }}</span>
+      <span>🥜 Arachides : {{ restaurant.peanutScore !== null && restaurant.peanutScore !== undefined ? restaurant.peanutScore + '/5' : 'N/A' }}</span>
+      <span>🥛 Produits laitiers : {{ restaurant.dairyScore !== null && restaurant.dairyScore !== undefined ? restaurant.dairyScore + '/5' : 'N/A' }}</span>
+    </li>
+  </ul>
+  <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+</section>

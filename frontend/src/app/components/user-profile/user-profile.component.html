@@ -1,0 +1,48 @@
+<section>
+  <h1>Affichage des profils</h1>
+  <div *ngIf="user; else errorTemplate">
+    <h2>Profil de {{ user.displayName }}</h2>
+
+    <div *ngIf="!isEditing">
+      <p><strong>Code Postal</strong> {{ user.zipCode }}</p>
+      <p><strong>Ville</strong> {{ user.city }}</p>
+      <p><strong>Allergie aux oeufs</strong> {{ user.isEggAllergy ? 'Oui' : 'Non' }}</p>
+      <p><strong>Allergie aux arachides</strong> {{ user.isPeanutAllergy ? 'Oui' : 'Non' }}</p>
+      <p><strong>Allergie aux produits laitiers</strong> {{ user.isDairyAllergy ? 'Oui' : 'Non' }}</p>
+      <button (click)="enableEdit()">Modifier le profil</button>
+    </div>
+
+    <div *ngIf="isEditing">
+      <label for="zipCode">Code Postal*</label>
+      <input id="zipCode" name="zipCode" [(ngModel)]="user.zipCode" #zipCodeModel="ngModel" pattern="^[0-9]{5}$" required/>
+      <div *ngIf="zipCodeModel.invalid && zipCodeModel.touched" style="color: rgb(186, 0, 0); font-size: 13px;">
+        <p *ngIf="zipCodeModel.errors?.['pattern']">Le code postal doit comporter 5 chiffres.</p>
+      </div> 
+
+      <label for="city">Ville*</label>
+      <input id="city" name="city" [(ngModel)]="user.city" #cityModel="ngModel" required minlength="2"/>
+      <div *ngIf="cityModel.invalid && cityModel.touched" style="color: rgb(186, 0, 0); font-size: 13px;">
+        <p *ngIf="cityModel.errors?.['required']">La ville est requise.</p>
+        <p *ngIf="cityModel.errors?.['minlength']">La ville doit comporter au moins 2 caractères.</p>
+      </div>    
+
+      <label for="eggAllergy">Allergie aux oeufs</label>
+      <input type="checkbox" id="eggAllergy" [(ngModel)]="user.isEggAllergy" />
+
+      <label for="peanutAllergy">Allergie aux arachides</label>
+      <input type="checkbox" id="peanutAllergy" [(ngModel)]="user.isPeanutAllergy" />
+
+      <label for="dairyAllergy">Allergie aux produits laitiers</label>
+      <input type="checkbox" id="dairyAllergy" [(ngModel)]="user.isDairyAllergy" />
+
+      <p class="info">* Critères obligatoires.</p>
+
+      <button [disabled]="zipCodeModel.invalid || cityModel.invalid" (click)="updateUser()">Enregistrer</button>
+    </div>
+  </div>
+    
+  <ng-template #errorTemplate>
+    <p>{{ errorMessage }}</p>
+  </ng-template>
+  <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+</section>

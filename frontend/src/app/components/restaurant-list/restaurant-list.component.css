@@ -1,0 +1,60 @@
+section {
+    background-color: #70696945;
+    border-radius: 25px;
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 600px;
+    color: #706969;
+}
+
+section h2 {
+    background-color: #706969d2;
+    color: white;
+    font-weight: 400;
+    padding: 1rem;
+    border-radius: 10px;
+    min-width: 300px;
+    font-size: 1.2rem;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+li p {
+    margin: 0;
+}
+
+li strong {
+    margin-top: 0.5rem;
+}
+
+li span {
+    margin-top: 0.3rem;
+}
+
+.back-to-home-button {
+    background-color: #706969d2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: white;
+    color: #706969;
+    transform: scale(1.02);
+}

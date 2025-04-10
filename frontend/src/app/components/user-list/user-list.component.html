@@ -1,0 +1,17 @@
+<section>
+  <h1>Liste des utilisateurs</h1>
+  <ul>
+    <li *ngFor="let user of users">
+      <strong>{{ user.displayName }}</strong> 
+      {{ user.city }} ({{ user.zipCode }})<br>
+      <span>Allergies :</span>
+      <span *ngIf="user.isEggAllergy">🥚 Oeufs </span>
+      <span *ngIf="user.isPeanutAllergy">🥜 Arachides </span>
+      <span *ngIf="user.isDairyAllergy">🥛 Produits laitiers </span>
+      <span *ngIf="!user.isPeanutAllergy && !user.isEggAllergy && !user.isDairyAllergy">
+        Aucune allergie indiquée
+      </span>
+    </li>
+    <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+  </ul>
+</section>

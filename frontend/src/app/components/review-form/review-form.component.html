@@ -1,0 +1,35 @@
+<section>
+  <h1>Ecrire un avis</h1>
+  <p class="intro">Notez la prise en compte des allergies dans vos restaurants préférés, de 1 à 5 (5 étant le meilleur).</p>
+  <form #form="ngForm" (ngSubmit)="submitReview()">
+    <label for="submittedBy">Nom d'utilisateur*</label>
+    <input id="submittedBy" type="text" [(ngModel)]="review.submittedBy" name="submittedBy" required><br>
+
+    <label for="restaurantId">ID du restaurant*</label>
+    <input id="restaurantId" type="number" [(ngModel)]="review.restaurantId" name="restaurantId" required min="1"><br>
+
+    <label for="reviewText">Commentaire*</label>
+    <textarea id="reviewText" [(ngModel)]="review.review" name="review" required></textarea><br>
+
+    <p class="scores-title">Note de prise en compte de l'allergie /5</p>
+    <div class="scores">
+      <div class="score-label">
+        <label for="peanutScore">Arachides</label>
+        <input id="peanutScore" type="number" [(ngModel)]="review.peanutScore" name="peanutScore" min="1" max="5">
+      </div>
+      <div class="score-label">
+        <label for="eggScore">Oeufs</label>
+        <input id="eggScore" type="number" [(ngModel)]="review.eggScore" name="eggScore" min="1" max="5">
+      </div>
+      <div class="score-label">
+        <label for="dairyScore">Produits laitiers</label>
+        <input id="dairyScore" type="number" [(ngModel)]="review.dairyScore" name="dairyScore" min="1" max="5">
+      </div>
+    </div>
+
+    <p class="info">* Critères obligatoires.</p>
+    <p class="error" *ngIf="message" [ngClass]="messageType">{{ message }}</p>
+    <button type="submit" [disabled]="form.invalid">Envoyer l'avis</button>
+  </form>
+  <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+</section>

@@ -1,0 +1,47 @@
+<section>
+  <h1>Créer un utilisateur</h1>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <label>
+      Nom d'utilisateur* **
+      <input formControlName="displayName" />
+    </label>
+    <p class="error" *ngIf="errorMessage" style="color: rgb(186, 0, 0);">{{ errorMessage }}</p>
+
+    <label>
+      Code postal*
+      <input formControlName="zipCode" />
+    </label>
+
+    <div *ngIf="userForm.get('zipCode')?.invalid && userForm.get('zipCode')?.touched" style="color: rgb(186, 0, 0);">
+      <p class="error" *ngIf="userForm.get('zipCode')?.errors?.['pattern']">
+        Le code postal doit contenir exactement 5 chiffres.
+      </p>
+    </div>
+
+    <label>
+      Ville*
+      <input formControlName="city" />
+    </label>
+
+    <label>
+      Allergie aux œufs
+      <input type="checkbox" formControlName="isEggAllergy" />
+    </label>
+
+    <label>
+      Allergie aux arachides
+      <input type="checkbox" formControlName="isPeanutAllergy" />
+    </label>
+
+    <label>
+      Allergie aux produits laitiers
+      <input type="checkbox" formControlName="isDairyAllergy" />
+    </label>
+    <p class="info">* Critères obligatoires.<br>** Votre nom d'utilisateur est unique et ne pourra pas être modifié.</p>
+    <p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
+    <button type="submit" [disabled]="userForm.invalid">Créer l'utilisateur</button>
+  </form>
+
+  <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+</section>

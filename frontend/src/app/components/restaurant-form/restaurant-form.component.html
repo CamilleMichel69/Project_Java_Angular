@@ -1,0 +1,31 @@
+<section>
+  <h1>Créer un restaurant</h1>
+
+  <form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+    <label>
+      Nom*
+      <input formControlName="name" />
+    </label>
+    <br />
+    <label>
+      Adresse*
+      <input formControlName="address" />
+    </label>
+    <br />
+    <label>
+      Code Postal*
+      <input formControlName="zipCode" />
+    </label>
+    <br />
+    <label>
+      Ville*
+      <input formControlName="city" />
+    </label>
+    <br />
+    <p class="info">* Critères obligatoires <br>Attention, une fois validés, les éléments ne sont pas modifiables.</p>
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <button type="submit" [disabled]="restaurantForm.invalid">Créer le restaurant</button>
+    <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+  </form>
+</section>

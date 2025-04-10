@@ -1,0 +1,62 @@
+section {
+    background-color: #70696945;
+    border-radius: 25px;
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 600px;
+    color: #706969;
+    text-align: center;
+}
+
+ul {
+    padding: 0;
+    width: 80%;
+}
+
+li {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nameAndRestoId, .scores {
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-evenly;
+}
+
+.review-head {
+    margin: 0.5rem 3rem;
+}
+
+.scores p {
+    margin: 0;
+}
+
+.allergy-container {
+    margin: 0 0;
+    width: 30%;
+    font-size: 15px;
+    text-align: center;
+    align-content: center;
+}
+
+.back-to-home-button {
+    background-color: #706969d2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: white;
+    color: #706969;
+    transform: scale(1.02);
+}

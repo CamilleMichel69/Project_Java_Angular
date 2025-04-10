@@ -1,0 +1,139 @@
+h1, .intro {
+    color: #706969;
+}
+
+.intro {
+    width: 50%;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    margin: 2rem;
+    gap: 2rem;
+}
+  
+.grid-container section {
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 500px;
+    padding: 1.5rem;
+    border-radius: 25px;
+    overflow: hidden; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    color: white;
+    z-index: 0;
+}
+
+.grid-container section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    border-radius: 25px;
+}
+
+.section-users::before {
+    background-image: url('../../../assets/images/users.jpg');
+}
+
+.section-restaurants::before {
+    background-image: url('../../../assets/images/restaurant.jpg');
+}
+
+.section-reviews::before {
+    background-image: url('../../../assets/images/review.jpg');
+}
+
+.section-admin::before {
+    background-image: url('../../../assets/images/admin.jpg');
+} 
+  
+.grid-container section:hover {
+    background-color: #787878;
+}
+
+  
+.grid-container h2, 
+.grid-container label {
+    margin-top: 0;
+    color: #706969;
+}
+
+.grid-container section:hover h2,
+.grid-container section:hover label {
+    color: white;
+}
+
+.grid-container section:hover .search-button {
+    background-color: white;
+    color: #706969;
+}
+
+.grid-container button {
+    width: 90%;
+    margin: 0.5rem 2rem;
+    padding: 1rem;
+    font-size: 15px;
+    color: white;
+    background-color: #706969d2;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.grid-container .search-button {
+    padding: 0.4rem;
+}
+
+.grid-container button:hover {
+    transform: scale(1.02);
+    background-color: white;
+    color: #706969;
+}
+
+.grid-container input, 
+.grid-container select {
+    border: none;
+    border-radius: 5px;
+    color: #706969;
+    padding: 0.3rem;
+    width: 75%;
+    margin-top: 0.2rem;
+}
+
+.info {
+    color: rgb(186, 0, 0);
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .grid-container {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem;
+    }
+  
+    .grid-container section {
+      width: 100%;
+      min-height: auto; 
+    }
+  
+    .grid-container button {
+      margin: 0.5rem 0;
+    }
+  }
+  

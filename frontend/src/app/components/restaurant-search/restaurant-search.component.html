@@ -1,0 +1,38 @@
+<section>
+  <h1>Résultats de recherche : *</h1>
+  <h2>Scores d'allergie aux {{ allergyLabel }} dans le code postal {{ zipCode }}</h2>
+  <p class="info">* Triés par meilleurs scores pour l'allergie renseignée.</p>
+
+  <div *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="restaurants.length > 0; else noResults">
+    <ul>
+      <li *ngFor="let r of restaurants" class="restaurant-card">
+        <h3>{{ r.name }}</h3>
+        <p> {{ r.address }} </p>
+        <p>{{ r.city }} ({{ r.zipCode }})</p>
+
+        <div>
+          <p><strong>Scores d'allergie :</strong>
+          <p class="score">🥚 Œufs : 
+            {{ r.eggScore !== null && r.eggScore !== undefined ? r.eggScore + '/5' : 'N/A' }}
+          </p>
+          <p class="score">🥜 Arachides : 
+            {{ r.peanutScore !== null && r.peanutScore !== undefined ? r.peanutScore + '/5' : 'N/A' }}
+          </p>
+          <p class="score">🥛 Produits laitiers : 
+            {{ r.dairyScore !== null && r.dairyScore !== undefined ? r.dairyScore + '/5' : 'N/A' }}
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noResults>
+    <p>Aucun restaurant trouvé pour ces critères.</p>
+  </ng-template>
+
+  <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+</section>

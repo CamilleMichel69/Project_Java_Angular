@@ -1,0 +1,69 @@
+<main class="home">
+    <h1>Bienvenue sur Dining Reviews !</h1>
+    <p class="intro">Donnez votre avis sur les restaurants et contribuez à l'évaluation de leur prise en compte des allergies (arachides, œufs, produits laitiers).</p>
+    <div class="grid-container">
+        <section class="section-users">
+            <h2>ESPACE UTILISATEURS</h2>
+            <button routerLink="/create-user">Créer un utilisateur</button>
+            <button routerLink="/users">Liste des utilisateurs</button>
+            <button (click)="toggleSearchByDisplayName()">Trouver / Mettre à jour un utilisateur</button>
+            <div *ngIf="showSearchByDisplayName">
+                <form (ngSubmit)="goToUserProfile()" class="user-search-form">
+                <label for="displayName">Nom d'utilisateur :</label>
+                <input
+                    type="text"
+                    id="displayName"
+                    name="displayName"
+                    [(ngModel)]="displayName"
+                    required
+                />
+                <button class="search-button" type="submit">Rechercher</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section-restaurants">
+            <h2>ESPACE RESTAURANTS</h2>
+            <button routerLink="/create-restaurant">Créer un restaurant</button>
+            <button routerLink="/restaurants">Liste des restaurants</button>
+            <button (click)="toggleSearchById()">Rechercher un restaurant par ID</button>
+            <div *ngIf="showSearchByIdForm">
+                <form (ngSubmit)="searchRestaurantById()">
+                    <label for="restaurantId">ID du restaurant :</label>
+                    <input type="number" id="restaurantId" [(ngModel)]="restaurantId" name="restaurantId" required min="1">
+                    <button class="search-button" type="submit">Rechercher</button>
+                </form>
+                <p class="info" *ngIf="errorMessage">{{ errorMessage }}</p>
+            </div>
+            <button (click)="toggleSearchByZip()">Rechercher un restaurant par code postal et par allergie</button>
+            <div *ngIf="showSearchByZipForm">
+                <form (ngSubmit)="searchByZipAndAllergy()">
+                    <label for="zipCode">Code postal :</label>
+                    <input type="text" id="zipCode" name="zipCode" [(ngModel)]="zipCode" required pattern="^[0-9]{5}$">
+                
+                    <label for="allergy">Allergie :</label>
+                    <select id="allergy" name="allergy" [(ngModel)]="selectedAllergy" required>
+                    <option value="" disabled selected>Choisissez une allergie</option>
+                    <option value="egg">Œufs</option>
+                    <option value="peanut">Arachides</option>
+                    <option value="dairy">Produits laitiers</option>
+                    </select>
+                    <button class="search-button" type="submit">Rechercher</button>
+                </form>
+                <p class="info" *ngIf="searchError">{{ searchError }}</p>
+            </div>
+        </section>
+
+        <section class="section-reviews">
+            <h2>ESPACE AVIS</h2>
+            <button routerLink="/create-review">Ecrire un avis</button>
+            <button routerLink="/reviews">Liste des avis</button>
+        </section>
+
+        <section class="section-admin">
+            <h2>ESPACE ADMIN</h2>
+            <button routerLink="/admin/reviews">Avis en attente d'approbation</button>
+        </section>
+    </div>
+</main>
+  

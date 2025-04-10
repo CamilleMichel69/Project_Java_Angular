@@ -1,0 +1,37 @@
+<section>
+  <h1>Liste des avis en attente d'approbation</h1>
+  <ul *ngIf="pendingReviews.length > 0; else noPendingReviews">
+    <li *ngFor="let review of pendingReviews" class="review-item">
+      <div class="nameAndRestoId">
+        <p class="review-head"><strong>Utilisateur</strong> {{ review.submittedBy }}</p>
+        <p class="review-head"><strong>ID restaurant</strong> {{ review.restaurantId }}</p>
+      </div>
+      <p><strong>Commentaire</strong> {{ review.review }}</p>
+      <p><strong>Notes d'allergies</strong></p>
+      <div class="scores">
+        <div class="allergy-container">
+          <p>Arachides</p>
+          <p>{{ review.peanutScore !== null && review.peanutScore !== undefined ? review.peanutScore + '/5' : 'N/A' }}</p>
+        </div>
+        <div class="allergy-container">
+          <p>Oeufs</p>
+          <p>{{ review.eggScore !== null && review.eggScore !== undefined ? review.eggScore + '/5' : 'N/A' }}</p>
+        </div>
+        <div class="allergy-container">
+          <p>Produits laitiers
+          <p>{{ review.dairyScore !== null && review.dairyScore !== undefined ? review.dairyScore + '/5' : 'N/A' }}</p>
+        </div>
+      </div>
+      <div class="admin-button">
+        <button (click)="approve(review.id)">Accepter</button>
+        <button (click)="reject(review.id)">Rejeter</button>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #noPendingReviews>
+    <p>Aucun avis en attente d'approbation pour le moment.</p>
+  </ng-template>
+
+  <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+</section>

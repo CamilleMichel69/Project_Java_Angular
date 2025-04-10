@@ -1,0 +1,31 @@
+<section>
+  <h1>Détails du restaurant</h1>
+
+  <div *ngIf="restaurant; else errorBlock">
+    <h2>Restaurant "{{ restaurant.name }}"</h2>
+    <p><strong>Adresse</strong> {{ restaurant.address }}</p>
+    <p><strong>Code postal</strong> {{ restaurant.zipCode }}</p>
+    <p><strong>Ville</strong> {{ restaurant.city }}</p>
+
+    <p><strong>Scores d'allergie</strong></p>
+    <ul>
+      <li>
+        🥚 Œufs : 
+        {{ restaurant.eggScore !== null && restaurant.eggScore !== undefined ? restaurant.eggScore + '/5' : 'Non noté' }}
+      </li>
+      <li>
+        🥜 Arachides : 
+        {{ restaurant.peanutScore !== null && restaurant.peanutScore !== undefined ? restaurant.peanutScore + '/5' : 'Non noté' }}
+      </li>
+      <li>
+        🥛 Produits laitiers : 
+        {{ restaurant.dairyScore !== null && restaurant.dairyScore !== undefined ? restaurant.dairyScore + '/5' : 'Non noté' }}
+      </li>
+    </ul>  
+  </div>
+
+  <ng-template #errorBlock>
+    <p>{{ errorMessage }}</p>
+  </ng-template>
+  <button (click)="navigateToHome()" class="back-to-home-button">Retour à l'accueil</button>
+</section>

@@ -1,0 +1,10 @@
+* {
+    font-family: "QuickSand";    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+head {
+    display: none;
+}
